@@ -1,2 +1,6 @@
 jQuery-Knob-master.zip
 test/deployment/
+test/.classpath
+test/.project
+test/CircleDiagram-TestProject.mpr.bak
+test/CircleDiagram-TestProject.mpr.lock
