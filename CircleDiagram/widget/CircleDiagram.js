@@ -16,10 +16,10 @@ dojo.declare('CircleDiagram.widget.CircleDiagram', mxui.widget._WidgetBase, {
     update : function(obj, callback){
 		var value = obj.get(this.attr);
 		var inputnode = mxui.dom.input(value);
-		this.domNode.empty();
+		dojo.empty(this.domNode);
 		this.domNode.appendChild(inputnode);
 		$(inputnode).knob(attr);
-		
+
 		callback && callback();
 	}
 });

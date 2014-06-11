@@ -10,15 +10,9 @@
  *
  * Thanks to vor, eskimoblood, spiffistan, FabrizioC
  */
-(function (factory) {
-    if (typeof define === 'function' && define.amd) {
-        // AMD. Register as an anonymous module.
-        define(['jquery'], factory);
-    } else {
-        // Browser globals
-        factory(jQuery);
-    }
-}(function ($) {
+dojo.provide("CircleDiagram.widget.lib.jquery-1_11_1_min");
+
+(function ($) {
 
     /**
      * Kontrol library
@@ -796,5 +790,5 @@
         ).parent();
     };
 
-}));
+}(jQuery));
 
