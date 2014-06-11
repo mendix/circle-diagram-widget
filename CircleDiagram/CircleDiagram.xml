@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="CircleDiagram.widget.CircleDiagram" needsEntityContext="true" xmlns="http://www.mendix.com/widget/1.0/">
+	<name>Circle Diagram</name>
+	<description>Circle Diagram widget.</description>
+
+	<icon>
+	</icon>
+
+	<properties>
+		<property key="attr" type="attribute" required="true">
+			<caption>Attribute</caption>
+			<category>Data source</category>
+			<description>The attribute to display.</description>
+			<attributeTypes>
+				<attributeType name="Integer"/>
+				<attributeType name="Float"/>
+			</attributeTypes>
+		</property>
+	</properties>
+</widget>
