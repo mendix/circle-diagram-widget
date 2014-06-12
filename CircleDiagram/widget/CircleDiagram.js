@@ -18,11 +18,12 @@ dojo.declare('CircleDiagram.widget.CircleDiagram', mxui.widget._WidgetBase, {
 		var inputnode = mxui.dom.input();
 		dojo.empty(this.domNode);
 		this.domNode.appendChild(inputnode);
-		$(inputnode).knob({
+		var knob = $(inputnode).knob({
 			fgColor : 'red',
 			bgColor : 'blue',
 			readOnly : true
-		}).val(value);
+		});
+		knob.val(value);
 
 		callback && callback();
 	}
