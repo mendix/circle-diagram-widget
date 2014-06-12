@@ -27,6 +27,9 @@ dojo.declare('CircleDiagram.widget.CircleDiagram', mxui.widget._WidgetBase, {
 		
 		if (typeof(jQuery.knob) == "undefined")
 			dojo.require("CircleDiagram.widget.lib.jquery_knob");
+
+		if (!document.createElement('canvas').getContext)
+			dojo.require("CircleDiagram.widget.lib.excanvas");
 		
 		this.actLoaded();
 	},
