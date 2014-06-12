@@ -16,5 +16,75 @@
 				<attributeType name="Float"/>
 			</attributeTypes>
 		</property>
+		<property key="inputClass" type="string" required="false">
+			<caption>Inputbox class</caption>
+			<category>Appearance</category>
+			<description>The class that will be placed on the inputbox.</description>
+		</property>
+		<property key="displayInput" type="boolean" defaultValue="true">
+			<caption>Display input field.</caption>
+			<category>Appearance</category>
+			<description>Boolean to turn the input field on/off.</description>
+		</property>
+		<property key="width" type="integer" required="true" defaultValue="200">
+			<caption>Width</caption>
+			<category>Appearance</category>
+			<description>The width of the circle diagram in pixels.</description>
+		</property>
+		<property key="height" type="integer" required="true" defaultValue="200">
+			<caption>Height</caption>
+			<category>Appearance</category>
+			<description>The height of the circle diagram in pixels.</description>
+		</property>
+		<property key="fgColor" type="string" required="false">
+			<caption>Foreground color</caption>
+			<category>Appearance</category>
+			<description>The color for the text and the bar.</description>
+		</property>
+		<property key="bgColor" type="string" required="false">
+			<caption>Background color</caption>
+			<category>Appearance</category>
+			<description>The color for the background of the bar.</description>
+		</property>
+		<property key="thickness" type="string" required="true" defaultValue="0.35">
+			<caption>Line thickness</caption>
+			<category>Appearance</category>
+			<description>Thickness of the line compared to the circle's surface. 1 would fill the entire circle, 0.1 would be 10% of the circle's radius.</description>
+		</property>
+		<property key="lineCap" type="enumeration" required="true" defaultValue="butt">
+			<caption>Line cap</caption>
+			<category>Appearance</category>
+			<description>The shape of the line's ending cap.</description>
+			<enumerationValues>
+                <enumerationValue key="butt">Butt</enumerationValue>
+                <enumerationValue key="round">Round</enumerationValue>
+            </enumerationValues> 
+		</property>
+
+		<property key="minValue" type="integer" required="true" defaultValue="0">
+			<caption>Minimum value</caption>
+			<category>Behaviour</category>
+			<description>The minimum value the diagram can start at.</description>
+		</property>
+		<property key="maxValue" type="integer" required="true" defaultValue="100">
+			<caption>Maximum value</caption>
+			<category>Behaviour</category>
+			<description>The maximum value the diagram can go to.</description>
+		</property>
+		<property key="stepSize" type="integer" required="true" defaultValue="1">
+			<caption>Step size</caption>
+			<category>Behaviour</category>
+			<description>The increment that the steps use.</description>
+		</property>
+		<property key="angleOffset" type="integer" required="true" defaultValue="0">
+			<caption>Angle offset</caption>
+			<category>Behaviour</category>
+			<description>The offset at which the circle should start.</description>
+		</property>
+		<property key="angleArc" type="integer" required="true" defaultValue="360">
+			<caption>Angle arc</caption>
+			<category>Behaviour</category>
+			<description>The amount of degrees of a circle that should be shown.</description>
+		</property>
 	</properties>
 </widget>

@@ -15,6 +15,20 @@ public class Microflows
 {
 	// These are the Microflows for the MyFirstModule module
 
+	public static void onchangeMicroflow(IContext context, myfirstmodule.proxies.Circle _circle)
+	{
+		try
+		{
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("Circle", _circle == null ? null : _circle.getMendixObject());
+			Core.execute(context, "MyFirstModule.onchangeMicroflow", params);
+		}
+		catch (CoreException e)
+		{
+			throw new MendixRuntimeException(e);
+		}
+	}
+
 	public static void openAccount(IContext context, administration.proxies.Account _account)
 	{
 		try

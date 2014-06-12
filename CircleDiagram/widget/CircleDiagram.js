@@ -1,7 +1,23 @@
 dojo.provide("CircleDiagram.widget.CircleDiagram");
 
 dojo.declare('CircleDiagram.widget.CircleDiagram', mxui.widget._WidgetBase, {
+	// inputarguments
 	attr : null,
+	inputClass: '',
+	displayInput : true,
+	width : "",
+	height : "",
+	fgColor : '',
+	bgColor : '',
+	thickness : "",
+	lineCap : "",
+	minValue : 0,
+	maxValue : 100,
+	stepSize : 1,
+	angleOffset : 0,
+	angleArc : 360,
+	// *
+	
 	inputnode : null,
 	mxobj : null,
 
@@ -22,13 +38,25 @@ dojo.declare('CircleDiagram.widget.CircleDiagram', mxui.widget._WidgetBase, {
     		callback : dojo.hitch(this, this.refresh)
     	});
 		var value = +obj.get(this.attr);
-		var mxnode = mxui.dom.input();
+		var mxnode = mxui.dom.input({
+			className : this.inputClass
+		});
 		dojo.empty(this.domNode);
 		this.domNode.appendChild(mxnode);
 		this.inputnode = $(mxnode);
 		var knob = this.inputnode.knob({
-			fgColor : 'red',
-			bgColor : 'blue',
+			displayInput : this.displayInput,
+			width : this.width,
+			height : this.height,
+			thickness : this.thickness,
+			lineCap : this.lineCap,
+			min : this.minValue,
+			max : this.maxValue,
+			stepSize : this.stepSize,
+			angleOffset : this.angleOffset,
+			angleArc : this.angleArc,
+			fgColor : this.fgColor,
+			bgColor : this.bgColor,
 			readOnly : true
 		});
 		this.inputnode.val(value).trigger("change");
@@ -37,7 +65,7 @@ dojo.declare('CircleDiagram.widget.CircleDiagram', mxui.widget._WidgetBase, {
 	},
 
 	refresh : function(objguid) {
-		if (this.mxobj.getGuid == objguid) {
+		if (this.mxobj.getGuid() == objguid) {
 			var value = +this.mxobj.get(this.attr);
 			this.inputnode.val(value).trigger("change");
 		}
