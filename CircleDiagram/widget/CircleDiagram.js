@@ -2,6 +2,8 @@ dojo.provide("CircleDiagram.widget.CircleDiagram");
 
 dojo.declare('CircleDiagram.widget.CircleDiagram', mxui.widget._WidgetBase, {
 	attr : null,
+	inputnode : null,
+	mxobj : null,
 
 	startup : function(){
 		if (typeof(jQuery) == "undefined")
@@ -14,17 +16,30 @@ dojo.declare('CircleDiagram.widget.CircleDiagram', mxui.widget._WidgetBase, {
 	},
     
     update : function(obj, callback){
+    	this.mxobj = obj;
+    	mx.data.subscribe({
+    		guid : obj.getGuid(),
+    		callback : dojo.hitch(this, this.refresh)
+    	});
 		var value = +obj.get(this.attr);
-		var inputnode = mxui.dom.input();
+		var mxnode = mxui.dom.input();
 		dojo.empty(this.domNode);
-		this.domNode.appendChild(inputnode);
-		var knob = $(inputnode).knob({
+		this.domNode.appendChild(mxnode);
+		this.inputnode = $(mxnode);
+		var knob = this.inputnode.knob({
 			fgColor : 'red',
 			bgColor : 'blue',
 			readOnly : true
 		});
-		knob.val(value);
+		this.inputnode.val(value).trigger("change");
 
 		callback && callback();
+	},
+
+	refresh : function(objguid) {
+		if (this.mxobj.getGuid == objguid) {
+			var value = +this.mxobj.get(this.attr);
+			this.inputnode.val(value).trigger("change");
+		}
 	}
 });
