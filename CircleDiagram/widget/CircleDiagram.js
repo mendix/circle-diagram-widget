@@ -14,11 +14,15 @@ dojo.declare('CircleDiagram.widget.CircleDiagram', mxui.widget._WidgetBase, {
 	},
     
     update : function(obj, callback){
-		var value = obj.get(this.attr);
-		var inputnode = mxui.dom.input(value);
+		var value = +obj.get(this.attr);
+		var inputnode = mxui.dom.input();
 		dojo.empty(this.domNode);
 		this.domNode.appendChild(inputnode);
-		$(inputnode).knob(attr);
+		$(inputnode).knob({
+			fgColor : 'red',
+			bgColor : 'blue',
+			readOnly : true
+		}).val(value);
 
 		callback && callback();
 	}
