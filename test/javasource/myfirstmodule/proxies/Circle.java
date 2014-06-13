@@ -95,14 +95,6 @@ public class Circle
 		return myfirstmodule.proxies.Circle.initialize(context, mendixObject);
 	}
 
-	public static java.util.List<myfirstmodule.proxies.Circle> load(IContext context, String xpathConstraint) throws CoreException
-	{
-		java.util.List<myfirstmodule.proxies.Circle> result = new java.util.ArrayList<myfirstmodule.proxies.Circle>();
-		for (IMendixObject obj : Core.retrieveXPathQuery(context, "//MyFirstModule.Circle" + xpathConstraint))
-			result.add(myfirstmodule.proxies.Circle.initialize(context, obj));
-		return result;
-	}
-
 	/**
 	 * Commit the changes made on this proxy object.
 	 */

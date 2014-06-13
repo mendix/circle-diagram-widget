@@ -10,10 +10,25 @@ import com.mendix.core.Core;
 import com.mendix.core.CoreException;
 import com.mendix.systemwideinterfaces.MendixRuntimeException;
 import com.mendix.systemwideinterfaces.core.IContext;
+import com.mendix.systemwideinterfaces.core.IMendixObject;
 
 public class Microflows
 {
 	// These are the Microflows for the MyFirstModule module
+
+	public static myfirstmodule.proxies.Circle circleDataSource(IContext context)
+	{
+		try
+		{
+			Map<String, Object> params = new HashMap<String, Object>();
+			IMendixObject result = (IMendixObject)Core.execute(context, "MyFirstModule.CircleDataSource", params);
+			return result == null ? null : myfirstmodule.proxies.Circle.initialize(context, result);
+		}
+		catch (CoreException e)
+		{
+			throw new MendixRuntimeException(e);
+		}
+	}
 
 	public static void onchangeMicroflow(IContext context, myfirstmodule.proxies.Circle _circle)
 	{
@@ -22,33 +37,6 @@ public class Microflows
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("Circle", _circle == null ? null : _circle.getMendixObject());
 			Core.execute(context, "MyFirstModule.onchangeMicroflow", params);
-		}
-		catch (CoreException e)
-		{
-			throw new MendixRuntimeException(e);
-		}
-	}
-
-	public static void openAccount(IContext context, administration.proxies.Account _account)
-	{
-		try
-		{
-			Map<String, Object> params = new HashMap<String, Object>();
-			params.put("Account", _account == null ? null : _account.getMendixObject());
-			Core.execute(context, "MyFirstModule.OpenAccount", params);
-		}
-		catch (CoreException e)
-		{
-			throw new MendixRuntimeException(e);
-		}
-	}
-
-	public static void openAccounts(IContext context)
-	{
-		try
-		{
-			Map<String, Object> params = new HashMap<String, Object>();
-			Core.execute(context, "MyFirstModule.OpenAccounts", params);
 		}
 		catch (CoreException e)
 		{
