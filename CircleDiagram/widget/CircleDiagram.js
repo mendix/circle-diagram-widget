@@ -30,6 +30,8 @@ dojo.declare('CircleDiagram.widget.CircleDiagram', mxui.widget._WidgetBase, {
 
 		if (!document.createElement('canvas').getContext)
 			dojo.require("CircleDiagram.widget.lib.excanvas");
+
+		dojo.style(this.domNode, "position", "relative");
 		
 		this.actLoaded();
 	},
