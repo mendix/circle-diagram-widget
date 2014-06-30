@@ -13,6 +13,7 @@ dojo.declare('CircleDiagram.widget.CircleDiagram', mxui.widget._WidgetBase, {
 	lineCap : "",
 	minValue : 0,
 	maxValue : 100,
+		maxValueAttr : '',
 	stepSize : 1,
 	angleOffset : 0,
 	angleArc : 360,
@@ -20,8 +21,14 @@ dojo.declare('CircleDiagram.widget.CircleDiagram', mxui.widget._WidgetBase, {
 	
 	inputnode : null,
 	mxobj : null,
+	_hasStarted : false,
 
 	startup : function(){
+		if (this._hasStarted)
+			return;
+
+		this._hasStarted = true;
+
 		if (typeof(jQuery) == "undefined")
 			dojo.require("CircleDiagram.widget.lib.jquery-1_11_1_min");
 		
@@ -56,7 +63,7 @@ dojo.declare('CircleDiagram.widget.CircleDiagram', mxui.widget._WidgetBase, {
 			thickness : this.thickness,
 			lineCap : this.lineCap,
 			min : this.minValue,
-			max : this.maxValue,
+			max : this.maxValueAttr != "" ? obj.get(this.maxValueAttr) : this.maxValue,
 			stepSize : this.stepSize,
 			angleOffset : this.angleOffset,
 			angleArc : this.angleArc,
@@ -73,6 +80,9 @@ dojo.declare('CircleDiagram.widget.CircleDiagram', mxui.widget._WidgetBase, {
 		if (this.mxobj.getGuid() == objguid) {
 			var value = +this.mxobj.get(this.attr);
 			this.inputnode.val(value).trigger("change");
+			this.inputnode.trigger('configure', {
+				max : this.maxValueAttr != "" ? this.mxobj.get(this.maxValueAttr) : this.maxValue
+			}).val(value).trigger("change");
 		}
 	}
 });

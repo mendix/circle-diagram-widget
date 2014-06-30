@@ -71,6 +71,15 @@
 			<category>Behaviour</category>
 			<description>The maximum value the diagram can go to.</description>
 		</property>
+		<property key="maxValueAttr" type="attribute" required="false">
+			<caption>Maximum value (attribute)</caption>
+			<category>Behaviour</category>
+			<description>The maximum value the diagram can go to as specified by an attribute.</description>
+			<attributeTypes>
+				<attributeType name="Integer"/>
+				<attributeType name="Float"/>
+			</attributeTypes>
+		</property>
 		<property key="stepSize" type="integer" required="true" defaultValue="1">
 			<caption>Step size</caption>
 			<category>Behaviour</category>
