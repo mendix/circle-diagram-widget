@@ -15,6 +15,7 @@ mxui.widget.declare('CircleDiagram.widget.CircleDiagram', {
 		lineCap : '',
 		minValue : 0,
 		maxValue : 100,
+		maxValueAttr : '',
 		stepSize : 1,
 		angleOffset : 0,
 		angleArc : 360
@@ -65,7 +66,7 @@ mxui.widget.declare('CircleDiagram.widget.CircleDiagram', {
 			thickness : this.thickness,
 			lineCap : this.lineCap,
 			min : this.minValue,
-			max : this.maxValue,
+			max : this.maxValueAttr != "" ? obj.get(this.maxValueAttr) : this.maxValue,
 			stepSize : this.stepSize,
 			angleOffset : this.angleOffset,
 			angleArc : this.angleArc,
@@ -81,7 +82,9 @@ mxui.widget.declare('CircleDiagram.widget.CircleDiagram', {
 	refresh : function(objguid) {
 		if (this.mxobj.getGuid() == objguid) {
 			var value = +this.mxobj.get(this.sourceAttr);
-			this.inputnode.val(value).trigger("change");
+			this.inputnode.trigger('configure', {
+				max : this.maxValueAttr != "" ? this.mxobj.get(this.maxValueAttr) : this.maxValue
+			}).val(value).trigger("change");
 		}
 	},
 	uninitialize : function(){
