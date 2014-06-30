@@ -2,7 +2,7 @@ dojo.provide("CircleDiagram.widget.CircleDiagram");
 
 dojo.declare('CircleDiagram.widget.CircleDiagram', mxui.widget._WidgetBase, {
 	// inputarguments
-	attr : null,
+	attr : '',
 	inputClass: '',
 	displayInput : true,
 	width : "",
