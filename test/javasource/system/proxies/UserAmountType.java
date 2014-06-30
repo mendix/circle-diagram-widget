@@ -4,15 +4,14 @@
 
 package system.proxies;
 
-public enum EventStatus
+public enum UserAmountType
 {
-	Running(new String[][] { new String[] { "en_US", "Running" }, new String[] { "nl_NL", "Bezig" } }),
-	Completed(new String[][] { new String[] { "en_US", "Completed" }, new String[] { "nl_NL", "Voltooid" } }),
-	Error(new String[][] { new String[] { "en_US", "Error" }, new String[] { "nl_NL", "Fout" } });
+	Specified(new String[][] { new String[] { "en_US", "Specified" }, new String[] { "nl_NL", "Gespecificeerd" } }),
+	Unlimited(new String[][] { new String[] { "en_US", "Unlimited" }, new String[] { "nl_NL", "Onbeperkt" } });
 
 	private java.util.Map<String,String> captions;
 
-	private EventStatus(String[][] captionStrings)
+	private UserAmountType(String[][] captionStrings)
 	{
 		this.captions = new java.util.HashMap<String,String>();
 		for (String[] captionString : captionStrings)

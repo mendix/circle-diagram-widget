@@ -4,15 +4,15 @@
 
 package system.proxies;
 
-public enum EventStatus
+public enum UserLimitationType
 {
-	Running(new String[][] { new String[] { "en_US", "Running" }, new String[] { "nl_NL", "Bezig" } }),
-	Completed(new String[][] { new String[] { "en_US", "Completed" }, new String[] { "nl_NL", "Voltooid" } }),
-	Error(new String[][] { new String[] { "en_US", "Error" }, new String[] { "nl_NL", "Fout" } });
+	Named(new String[][] { new String[] { "en_US", "Named" }, new String[] { "nl_NL", "Benoemd" } }),
+	Concurrent(new String[][] { new String[] { "en_US", "Concurrent" }, new String[] { "nl_NL", "Gelijktijdig" } }),
+	ConcurrentAnonymous(new String[][] { new String[] { "en_US", "Concurrent anonymous" }, new String[] { "nl_NL", "Gelijktijdig anoniem" } });
 
 	private java.util.Map<String,String> captions;
 
-	private EventStatus(String[][] captionStrings)
+	private UserLimitationType(String[][] captionStrings)
 	{
 		this.captions = new java.util.HashMap<String,String>();
 		for (String[] captionString : captionStrings)

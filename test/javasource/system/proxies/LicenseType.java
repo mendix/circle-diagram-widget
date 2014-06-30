@@ -4,15 +4,14 @@
 
 package system.proxies;
 
-public enum EventStatus
+public enum LicenseType
 {
-	Running(new String[][] { new String[] { "en_US", "Running" }, new String[] { "nl_NL", "Bezig" } }),
-	Completed(new String[][] { new String[] { "en_US", "Completed" }, new String[] { "nl_NL", "Voltooid" } }),
-	Error(new String[][] { new String[] { "en_US", "Error" }, new String[] { "nl_NL", "Fout" } });
+	Subscription(new String[][] { new String[] { "en_US", "Subscription" }, new String[] { "nl_NL", "Abonnement" } }),
+	Perpetual(new String[][] { new String[] { "en_US", "Perpetual" }, new String[] { "nl_NL", "Oneindig" } });
 
 	private java.util.Map<String,String> captions;
 
-	private EventStatus(String[][] captionStrings)
+	private LicenseType(String[][] captionStrings)
 	{
 		this.captions = new java.util.HashMap<String,String>();
 		for (String[] captionString : captionStrings)

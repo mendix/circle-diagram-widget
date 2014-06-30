@@ -1,27 +1,36 @@
 dojo.provide("CircleDiagram.widget.CircleDiagram");
 
-dojo.declare('CircleDiagram.widget.CircleDiagram', mxui.widget._WidgetBase, {
+mxui.widget.declare('CircleDiagram.widget.CircleDiagram', {
+	addons     : [dijit._Contained, mxui.addon._Contextable],
 	// inputarguments
-	attr : null,
-	inputClass: '',
-	displayInput : true,
-	width : "",
-	height : "",
-	fgColor : '',
-	bgColor : '',
-	thickness : "",
-	lineCap : "",
-	minValue : 0,
-	maxValue : 100,
-	stepSize : 1,
-	angleOffset : 0,
-	angleArc : 360,
+	inputargs: {
+		sourceAttr : '',
+		inputClass: '',
+		displayInput : true,
+		width : '',
+		height : '',
+		fgColor : '#000',
+		bgColor : '#FFF',
+		thickness : '',
+		lineCap : '',
+		minValue : 0,
+		maxValue : 100,
+		stepSize : 1,
+		angleOffset : 0,
+		angleArc : 360
+	},
 	// *
 	
 	inputnode : null,
 	mxobj : null,
+	_hasStarted : false,
 
 	startup : function(){
+		if (this._hasStarted)
+			return;
+
+		this._hasStarted = true;
+
 		if (typeof(jQuery) == "undefined")
 			dojo.require("CircleDiagram.widget.lib.jquery-1_11_1_min");
 		
@@ -42,7 +51,7 @@ dojo.declare('CircleDiagram.widget.CircleDiagram', mxui.widget._WidgetBase, {
     		guid : obj.getGuid(),
     		callback : dojo.hitch(this, this.refresh)
     	});
-		var value = +obj.get(this.attr);
+		var value = +obj.get(this.sourceAttr);
 		var mxnode = mxui.dom.input({
 			className : this.inputClass
 		});
@@ -71,8 +80,10 @@ dojo.declare('CircleDiagram.widget.CircleDiagram', mxui.widget._WidgetBase, {
 
 	refresh : function(objguid) {
 		if (this.mxobj.getGuid() == objguid) {
-			var value = +this.mxobj.get(this.attr);
+			var value = +this.mxobj.get(this.sourceAttr);
 			this.inputnode.val(value).trigger("change");
 		}
+	},
+	uninitialize : function(){
 	}
 });

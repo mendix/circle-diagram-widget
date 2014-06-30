@@ -10,30 +10,32 @@
 package system.actions;
 
 import com.mendix.core.Core;
-import com.mendix.systemwideinterfaces.core.IUser;
 import com.mendix.systemwideinterfaces.core.UserAction;
+import com.mendix.systemwideinterfaces.core.IMendixObject;
 
 /**
- * Verifies that the specified user name/password combination is valid.
+ * 
  */
-public class VerifyPassword extends UserAction<Boolean>
+public class ResetLicenseJava extends UserAction<Boolean>
 {
-	private String userName;
-	private String password;
+	private IMendixObject __licenseInformation;
+	private system.proxies.LicenseInformation licenseInformation;
 
-	public VerifyPassword(String userName, String password)
+	public ResetLicenseJava(IMendixObject licenseInformation)
 	{
 		super();
-		this.userName = userName;
-		this.password = password;
+		this.__licenseInformation = licenseInformation;
 	}
 
 	@Override
 	public Boolean executeAction() throws Exception
 	{
+		this.licenseInformation = __licenseInformation == null ? null : system.proxies.LicenseInformation.initialize(getContext(), __licenseInformation);
+
 		// BEGIN USER CODE
-		IUser user = Core.getUser(getContext(), userName);
-		return user != null && Core.authenticate(getContext(), user, password);
+		Core.resetLicense(licenseInformation.getMendixObject());
+		addRefreshObjectFeedback(licenseInformation.getMendixObject().getId());
+		return true;
 		// END USER CODE
 	}
 
@@ -43,7 +45,7 @@ public class VerifyPassword extends UserAction<Boolean>
 	@Override
 	public String toString()
 	{
-		return "VerifyPassword";
+		return "ResetLicenseJava";
 	}
 
 	// BEGIN EXTRA CODE

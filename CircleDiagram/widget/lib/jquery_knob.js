@@ -10,7 +10,7 @@
  *
  * Thanks to vor, eskimoblood, spiffistan, FabrizioC
  */
-dojo.provide("CircleDiagram.widget.lib.jquery-1_11_1_min");
+dojo.provide("CircleDiagram.widget.lib.jquery_knob");
 
 (function ($) {
 
