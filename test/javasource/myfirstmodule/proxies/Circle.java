@@ -29,7 +29,8 @@ public class Circle
 	 */
 	public enum MemberNames
 	{
-		circleValue("circleValue");
+		circleValue("circleValue"),
+		maxValueCircle("maxValueCircle");
 
 		private String metaName;
 
@@ -160,6 +161,42 @@ public class Circle
 	public final void setcircleValue(IContext context, Integer circlevalue)
 	{
 		getMendixObject().setValue(context, MemberNames.circleValue.toString(), circlevalue);
+	}
+
+	/**
+	 * @return value of maxValueCircle
+	 */
+	public final Integer getmaxValueCircle()
+	{
+		return getmaxValueCircle(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of maxValueCircle
+	 */
+	public final Integer getmaxValueCircle(IContext context)
+	{
+		return (Integer) getMendixObject().getValue(context, MemberNames.maxValueCircle.toString());
+	}
+
+	/**
+	 * Set value of maxValueCircle
+	 * @param maxvaluecircle
+	 */
+	public final void setmaxValueCircle(Integer maxvaluecircle)
+	{
+		setmaxValueCircle(getContext(), maxvaluecircle);
+	}
+
+	/**
+	 * Set value of maxValueCircle
+	 * @param context
+	 * @param maxvaluecircle
+	 */
+	public final void setmaxValueCircle(IContext context, Integer maxvaluecircle)
+	{
+		getMendixObject().setValue(context, MemberNames.maxValueCircle.toString(), maxvaluecircle);
 	}
 
 	/**
