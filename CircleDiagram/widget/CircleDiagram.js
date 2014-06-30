@@ -25,6 +25,7 @@ mxui.widget.declare('CircleDiagram.widget.CircleDiagram', {
 	inputnode : null,
 	mxobj : null,
 	_hasStarted : false,
+	$ : null,
 
 	startup : function(){
 		if (this._hasStarted)
@@ -34,6 +35,8 @@ mxui.widget.declare('CircleDiagram.widget.CircleDiagram', {
 
 		if (typeof(jQuery) == "undefined")
 			dojo.require("CircleDiagram.widget.lib.jquery-1_11_1_min");
+
+		this.$ = jQuery;
 		
 		if (typeof(jQuery.knob) == "undefined")
 			dojo.require("CircleDiagram.widget.lib.jquery_knob");
@@ -58,7 +61,7 @@ mxui.widget.declare('CircleDiagram.widget.CircleDiagram', {
 		});
 		dojo.empty(this.domNode);
 		this.domNode.appendChild(mxnode);
-		this.inputnode = $(mxnode);
+		this.inputnode = this.$(mxnode);
 		var knob = this.inputnode.knob({
 			displayInput : this.displayInput,
 			width : this.width,
