@@ -29,7 +29,8 @@ public class TestEntity
 	 */
 	public enum MemberNames
 	{
-		SomeNumber("SomeNumber");
+		SomeNumber("SomeNumber"),
+		Maxvalue("Maxvalue");
 
 		private String metaName;
 
@@ -168,6 +169,42 @@ public class TestEntity
 	public final void setSomeNumber(IContext context, Integer somenumber)
 	{
 		getMendixObject().setValue(context, MemberNames.SomeNumber.toString(), somenumber);
+	}
+
+	/**
+	 * @return value of Maxvalue
+	 */
+	public final Integer getMaxvalue()
+	{
+		return getMaxvalue(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of Maxvalue
+	 */
+	public final Integer getMaxvalue(IContext context)
+	{
+		return (Integer) getMendixObject().getValue(context, MemberNames.Maxvalue.toString());
+	}
+
+	/**
+	 * Set value of Maxvalue
+	 * @param maxvalue
+	 */
+	public final void setMaxvalue(Integer maxvalue)
+	{
+		setMaxvalue(getContext(), maxvalue);
+	}
+
+	/**
+	 * Set value of Maxvalue
+	 * @param context
+	 * @param maxvalue
+	 */
+	public final void setMaxvalue(IContext context, Integer maxvalue)
+	{
+		getMendixObject().setValue(context, MemberNames.Maxvalue.toString(), maxvalue);
 	}
 
 	/**
