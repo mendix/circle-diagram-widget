@@ -36,12 +36,12 @@
 			<category>Appearance</category>
 			<description>The height of the circle diagram in pixels.</description>
 		</property>
-		<property key="fgColor" type="string" required="false">
+        <property key="fgColor" type="string" required="false" defaultValue="#000">
 			<caption>Foreground color</caption>
 			<category>Appearance</category>
 			<description>The color for the text and the bar.</description>
 		</property>
-		<property key="bgColor" type="string" required="false">
+        <property key="bgColor" type="string" required="false" defaultValue="#FFF">
 			<caption>Background color</caption>
 			<category>Appearance</category>
 			<description>The color for the background of the bar.</description>
