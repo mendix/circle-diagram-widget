@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<clsMXWidgetSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <WidgetName>CircleDiagram</WidgetName>
+  <SourcePath>C:\Users\red\Documents\circle-diagram-widget\CircleDiagram</SourcePath>
+  <DestinationPath>C:\Users\red\Documents\circle-diagram-widget\test4X</DestinationPath>
+  <Monitor>true</Monitor>
+</clsMXWidgetSettings>
