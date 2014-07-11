@@ -5,6 +5,7 @@ mxui.widget.declare('CircleDiagram.widget.CircleDiagram', {
 	attr : '',
 	inputClass: '',
 	displayInput : true,
+	displayInputType : '',
 	width : '',
 	height : '',
 	colorCircle : '',
@@ -99,7 +100,10 @@ mxui.widget.declare('CircleDiagram.widget.CircleDiagram', {
 		mxnode = mxui.dom.input({
 			className : this.inputClass
 		});
-		
+
+		// Set class for domNode
+		dojo.addClass(this.domNode, 'wx-circlediagram-container');
+
 		// Empty domnode of this and appand new input
 		dojo.empty(this.domNode);
 		this.domNode.appendChild(mxnode);
@@ -124,8 +128,15 @@ mxui.widget.declare('CircleDiagram.widget.CircleDiagram', {
 			readOnly : true
 		});
 
+		// Set display type!
+		knob.css('display',this.displayInputType.replace('inlineblock','inline-block'));
+		knob.addClass('wx-circlediagram');
+
 		// Set the value of the input field.
 		this.inputnode.val(this.valueOriginal).trigger('change');
+
+		// Set class inputnode
+		this.inputnode.addClass('wx-circlediagram-input');
  
 		if (!this.showPercentage) {
 			this.createLabel(knob);
@@ -162,12 +173,14 @@ mxui.widget.declare('CircleDiagram.widget.CircleDiagram', {
 		dnode.css('textAlign', 'center');
 		dnode.css('width', this.width);
 		dnode.css('fontSize', fontSizeLabel + 'px');
+		dnode.addClass('wx-circlediagram-label-container');
 
 		// Create label node.
 		dtnode = this.$('<div></div>');
 		dtnode.html(this.labelCircleDiagram);
 		dtnode.css('fontSize', fontSizeLabel + 'px');
 		dtnode.css('color', this.fgColorLabel);
+		dtnode.addClass('wx-circlediagram-label');
 
 		// Append description node.
 		dnode.append(dtnode);
@@ -189,6 +202,7 @@ mxui.widget.declare('CircleDiagram.widget.CircleDiagram', {
 			fontSizeLabel = 0,
 			fontSizeFromTo = 0;
 
+
 		// -----------------
 		// Percentage node
 		// -----------------
@@ -202,6 +216,7 @@ mxui.widget.declare('CircleDiagram.widget.CircleDiagram', {
 		ptxtnode.css('color',this.fgColor);
 		ptxtnode.css('backgroundColor', 'transparent');
 		ptxtnode.val(this.valuePercentage);
+		ptxtnode.addClass('wx-circlediagram-input');
 		knob.append(this.percentageInputNode);
 
 		// Do not display the original value (knob uses this for calculations)
@@ -228,6 +243,7 @@ mxui.widget.declare('CircleDiagram.widget.CircleDiagram', {
 		pnode.css('left', 0);
 		pnode.css('top', 0);
 		pnode.html('%');
+		pnode.addClass('wx-circlediagram-percentage');
 		knob.append(pnode);
 
 		// -----------------
@@ -237,12 +253,14 @@ mxui.widget.declare('CircleDiagram.widget.CircleDiagram', {
 		dnode.css('textAlign', 'center');
 		dnode.css('width', this.width);
 		dnode.css('fontSize', fontSizeLabel + 'px');
+		dnode.addClass('wx-circlediagram-label-container');
 
 		// Create label node.
 		dtnode = this.$('<div></div>');
 		dtnode.html(this.labelCircleDiagram);
 		dtnode.css('fontSize', fontSizeLabel + 'px');
 		dtnode.css('color', this.fgColorLabel);
+		dtnode.addClass('wx-circlediagram-label');
 
 		// Create text node.
 		this.descriptionNodeFromTo = this.$('<div></div>');
@@ -250,6 +268,7 @@ mxui.widget.declare('CircleDiagram.widget.CircleDiagram', {
 		dfromto.html(this.valueOriginal + ' / ' + this.maxValueUsed);
 		dfromto.css('fontSize', fontSizeFromTo + 'px');
 		dfromto.css('color', this.fgColorLabelFromTo);
+		dfromto.addClass('wx-circlediagram-label-fromto');
 		
 		// Append description node.
 		dnode.append(dtnode);

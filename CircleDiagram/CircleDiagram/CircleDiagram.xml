@@ -26,6 +26,16 @@
 			<category>Appearance</category>
 			<description>Boolean to turn the input field on/off.</description>
 		</property>
+		<property key="displayInputType" type="enumeration" required="true" defaultValue="inlineblock">
+			<caption>Display type</caption>
+			<category>Appearance</category>
+			<description>The type of display setting.</description>
+			<enumerationValues>
+                <enumerationValue key="inlineblock">inline-block</enumerationValue>
+                <enumerationValue key="block">block</enumerationValue>
+                <enumerationValue key="none">none</enumerationValue>
+            </enumerationValues> 
+		</property>
 		<property key="width" type="integer" required="true" defaultValue="200">
 			<caption>Width</caption>
 			<category>Appearance</category>
