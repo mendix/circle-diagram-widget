@@ -216,7 +216,7 @@ mxui.widget.declare('CircleDiagram.widget.CircleDiagram', {
 		ptxtnode.css('color',this.fgColor);
 		ptxtnode.css('backgroundColor', 'transparent');
 		ptxtnode.val(this.valuePercentage);
-		ptxtnode.addClass('wx-circlediagram-input');
+		ptxtnode.addClass('wx-circlediagram-input-percentage');
 		knob.append(this.percentageInputNode);
 
 		// Do not display the original value (knob uses this for calculations)
