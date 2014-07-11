@@ -131,7 +131,7 @@ mxui.widget.declare('CircleDiagram.widget.CircleDiagram', {
 
 		// Set display type!
 		knob.css('display',this.displayInputType.replace('inlineblock','inline-block'));
-		knob.css('position','relative');
+		knob.css('position',this.positionType);
 		knob.addClass('wx-circlediagram');
 
 		// Set the value of the input field.
