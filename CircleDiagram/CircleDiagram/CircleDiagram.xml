@@ -36,6 +36,15 @@
                 <enumerationValue key="none">none</enumerationValue>
             </enumerationValues> 
 		</property>
+		<property key="positionType" type="enumeration" required="true" defaultValue="relative">
+			<caption>Position type</caption>
+			<category>Appearance</category>
+			<description>The position type of the circle diagram.</description>
+			<enumerationValues>
+                <enumerationValue key="relative">relative</enumerationValue>
+                <enumerationValue key="absolute">absolute</enumerationValue>
+            </enumerationValues> 
+		</property>
 		<property key="width" type="integer" required="true" defaultValue="200">
 			<caption>Width</caption>
 			<category>Appearance</category>
