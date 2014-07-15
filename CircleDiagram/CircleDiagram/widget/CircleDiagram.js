@@ -280,10 +280,16 @@ mxui.widget.declare('CircleDiagram.widget.CircleDiagram', {
 
 	calcpercentage: function(value){
 		'use strict';
+
 		var maxRange = Math.abs(this.maxValueUsed) - Math.abs(this.minValue),
 			valueRange = value - Math.abs(this.minValue),
 			percentage = Math.round((valueRange * 100) / maxRange);
-		return percentage;
+
+		if(maxRange == 0 && valueRange == 0) {
+			percentage = 0;
+		}
+
+		return percentage; 
 	},
 
 	refresh : function(objguid) {
@@ -299,6 +305,9 @@ mxui.widget.declare('CircleDiagram.widget.CircleDiagram', {
 
 			// Set the value
 			this.valueOriginal = value;
+
+			// Set max value used.
+			this.maxValueUsed = (this.maxValueAttr != '') ? +this.mxobj.get(this.maxValueAttr) : this.maxValue; 
 
 			// Reformat value to percentage if needed.
 			this.valuePercentage = (this.showPercentage) ? this.calcpercentage(value) : value;
